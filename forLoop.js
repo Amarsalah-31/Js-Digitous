@@ -26,7 +26,7 @@ function entierAleatoire(min, max) {
     console.log(entier);
    
     ////Des boites////
-    
+   
      // results = 10, 34, 17;       
 
     ////Encore des boites///
