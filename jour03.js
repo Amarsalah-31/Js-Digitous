@@ -57,32 +57,105 @@ console.log(total);
  }
  console.log(reversed);
 
-////// exe 7 *** Bonus***
+//////  Bonus//////
+var limit = 100;
 
+for (var i = 0; i <= limit; i++) {
 
-for (var i= 0; i <= 100; i++){
-    if(i % 3 === 0){
-        console.log("fizz");
-    }else if (i % 5 ===0){
-        console.log("buzz");
-    }else if ( i % 3===0 && i% 5 ===0){
-        console.log("fizzbuzz");
-    }else if ( i % 7===0 ){
-        console.log();
-    }else{
-        console.log(i);
+    if (i % 7 !== 0) {
+        // if (i % 15 === 0) {
+        //     console.log("fizzbuzz", i);
+        // }
+        if (i % 3 === 0 && i % 5 === 0) {
+            console.log("fizzbuzz", i);
+        }
+        else if (i % 5 === 0) {
+            console.log("buzz", i);
+        } else if (i % 3 === 0) {
+            console.log("fizz", i);
+        } else {
+            console.log("value of i", i);
+        }
+
     }
+
+    // console.log("fin d'une iteration");
 }
-    ////exe 8 *** Bonus ll***
+    //// Bonus ll///
     var total = 0;
-    var limit = 10;
-    while (total<= limit ){
-        total ++;
-        limit += total;
-        console.log(i);
-    }
+var limit = 10;
 
-    /// exe 9 *** bouns lll***
-var promo5 = ["Kévin", "Laura", "Emran", "Elodie", "Anthony", "Eliott", "Andy", "Amar", "Art", "Baydir", "Julien", "Victor", "Yangchen", "Asaad"];
-var nom = promo5[Math.floor(Math.random() * promo5.length)];
-console.table(nom);
+var i = 0;
+
+while (i <= limit) {
+    total += i;
+
+    i++;
+}
+
+console.log(total);
+    
+
+    /// bouns lll///
+    var students = ["Amir", "Asma", "Sabrina", "Fasulu", "Ikram", "Karim"]; // 6
+
+    // console.log(students[0]);
+    // console.log(students[1]);
+    // console.log(students[2]);
+    // console.log(students[3]);
+    // console.log(students[4]);
+    // console.log(students[5]);
+    
+    var min = 0;
+    var max = students.length - 1;
+    
+    var random = Math.random(); // 0 inclus et 1 exclu
+    
+    var indexRandom = Math.floor(random * (max + 1));
+    
+    console.log(students[indexRandom])
+    
+    // var students = ["Amir", "Asma", "Sabrina", "Fasulu", "Ikram", "Karim"]; // 6
+    
+    // var min = 0;
+    // var max = students.length - 1;
+    
+    // var i = 1;
+    
+    // while (students[i] !== "Amir") {
+    //     i = Math.floor(Math.random() * (max + 1));
+    
+    //     console.log(students[i]);
+    // }
+    
+    // Bonus IV
+    var array = [];
+    var min = 0;
+    var max = 100;
+    var numRandom = 0;
+    
+    for (var i = 1; i <= 20; i++) {
+        numRandom = Math.floor(Math.random() * (max - min + 1));
+    
+        // console.log(numRandom);
+    
+        if (array.indexOf(numRandom) === -1) {
+            array.push(numRandom);
+        } else {
+            i--;
+        }
+    }
+    
+    console.table(array);
+    
+    var numMax = array[0]; 
+    
+    for (var i = 1; i < array.length; i++) {
+        var item = array[i];
+    
+        if (item > numMax) {
+            numMax = item;
+        }
+    }
+    
+    console.log(numMax);

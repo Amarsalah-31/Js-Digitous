@@ -1,112 +1,236 @@
 
 ///exe 1 *** Object***
-
 var cat = {
-        name: "Garfield",
-        age: 3,
-       isCute: true,
-    };
-    console.log(cat);
-    console.log(cat.name);
-    console.log(cat["age"]);
-    if (cat.isCute === true) {
-        console.log("So cute !");
-    }
+    name: "Garfield",
+    age: 3,
+    isCute: true
+};
+
+console.log(cat);
+console.log(cat.age);
+console.log(cat["age"]);
+
+// if (cat.isCute === true) { // is the same as below!
+if (cat.isCute) {
+    console.log("So cute !");
+}
 
 ///exe 2 *** Combine ***
 var cat2 = {
-       name: "Simba",
-         age: 5,
-         isCute: false,
-     };
-    
-     var cats = {
-         cat: {
-           name: "Garfield",
-            age: 3,
-           isCute: true,
-        },
-    
-         cat2: {
-             name: "Simba",
-          age: 5,
-            isCute: false,
-         }
-     };
-    
-    console.log(cats.age);
-    console.log(cats.isCute);
-console.log(cats["cat2".isCute]);
+    name: "Félix",
+    age: 5,
+    isCute: false,
+     properties: {
+         color: "black & white",
+         jump: 15
+     }
+};
+
+var cats = [cat, cat2];
+
+// console.log(cats)
+
+console.log("Age of cat", cat.age)
+console.log("Age of cat 2", cats[0].age)
+
+
+console.log("cat2 isCute? ", cat2.isCute);
+console.log("cat2 isCute? 2", cat2["isCute"])
+console.log("cat2 isCute? 3", cats[1].isCute)
+console.log("cat2 isCute? 4", cats[1]["isCute"])
+
+var keyName = "isCute"
+console.log("cat2 isCute? 5", cat2[keyName])
+console.log("cat2 isCute? 6", cats[1][keyName])
 ///exe 3 ***Even***
 
- function checkIfEven(num) {
-     if(num % 2===0) {
+function checkIfEven(num) {
+    if (num % 2 === 0) {
         console.log("Even");
-     } else {
-         console.log("Odd");
-     }
- }
+    } else {
+        console.log("Odd");
+    }
+}
 
- 
- console.log(checkIfEven(9));
- console.log(checkIfEven(4));
+checkIfEven(3);
+checkIfEven(4);
+checkIfEven(543);
+checkIfEven(86734319);
 
-//// exe 4 ***Compare**
+//// Compare////
 
 function compare(num1, num2) {
-    if(num1 > num2) {
-        console.log("num1 is bigger");
-    } else if(num2 > num1) {
-        console.log("num2 is bigger");
+    if (num1 > num2) {
+        console.log(`${num1} is bigger`);
+    } else if (num2 > num1) {
+        console.log(`${num2} is bigger`);
     } else {
-        console.log("both are the same");
+        console.log("Both are the same");
     }
 }
-compare(6,4);
-compare(7,6);
-compare(7,4);
+
+compare(12, 10);
+compare(1, 10);
+compare(10, 10);
 
 
-///exe 5 ****Add Up****
-var total= 0;
-function addUp  (num){
-    for (var i= 0; i<= num; i++){
-         total = total+1;
-        }
-        return total;
+///Add Up///
+function addUp(num) {
+    var sum = 0;
+
+    for (var i = 1; i <= num; i++) {
+        sum += i;
     }
-    var x = addUp(12);
-    console.log(x);
-    console.log('le total est ${x}');
 
- /// exe 6 ****Bonus*****
-
-function generatepassword (num){
-    if (num => 6 || num <= 15){
-return "error";
-    }
-    let letters = ["A","B","C","D","E","F","G","H","I","J","k","L",""];
-    let password ="";
-    for (let i = 1 ;i <= num; i++){
-        let index = Math.floor(Math.random()* letters.length -1 );
-        console.log(index);
-        password += letters[index];
-    }
-return password;
+    return sum;
 }
-console.log("");
-console.log(generatepassword(10));
-console.log(generatepassword(17));
-///exe**** time *******
+
+var result = addUp(12);
+console.log(result);
+addUp(12);
+/// Time////
 function format(num) {
-     return Math.floor(num / 60) + ':' + Math.floor(num % 60) + ':' + (num - 2) ;
+    // 124 secondes => 2m et 4s
+    // je sais que 1m = 60s
+   
+    console.log(Math.floor(num / 3600)); // heures
+    console.log(num % 3600) // minutes et les secondes
+    console.log(Math.floor(num % 3600 / 60));
+    console.log(num % 3600 % 60);
+    
+
+    var hours = Math.floor(num / 3600);
+    var restHours = num % 3600;
+    var minutes = Math.floor(restHours / 60);
+    var secondes = restHours % 60;
+    console.log(`${hours} : ${minutes} : ${secondes}`);
+}
+
+function formatWithoutMaths(num) {
+    var days = 0;
+    var hours = 0;
     var minutes = 0;
     var seconds = 0;
-    return minutes = ":" + Math.floor(num / 60) + ":" + seconds + ":" + (num - minutes * 60) + ":" + minutes.substr(-2) + ":" + AudioScheduledSourceNode.substr(-2) + seconds;
+    for (var i = 0; i < num; i++) {
+        seconds++;
+        if (seconds === 60) {
+            minutes++;
+            seconds = 0;
+        }
+        if (minutes === 60) {
+            hours++;
+            minutes = 0;
+        }
+        if (hours === 24) {
+            days++;
+            hours = 0;
+        }
+    }
+    console.log(`${hours} : ${minutes} : ${seconds}`);
 }
 
-console.log(format());
+function mehdiFormat(num) {
+    var hours = Math.floor(num / 3600);
+    var rest = num - hours * 3600;
+    var minutes = Math.floor(rest / 60);
+    var seconds = rest - minutes * 60;
+    console.log(`${hours} : ${minutes} : ${seconds}`);
+}
 
+format(3700);
+formatWithoutMaths(3700);
+mehdiFormat(3700);
+///Bouns///
+function generatePassword(num) {
+    var max = 122;
+    var min = 48;
+    var password = "";
+    for (var i = 0; i < num; i++) {
+        var randomIndex = Math.floor(Math.random() * (max - min + 1) + min);
+        while (randomIndex >= 58 && randomIndex <= 64) {
+            randomIndex = Math.floor(Math.random() * (max - min + 1) + min);
+        }
+        var letter = String.fromCharCode(randomIndex);
+        password += letter;
+    }
 
+    console.log(password);
+}
 
-///exe 7 *****Bonus ll*****
+generatePassword(10);
+
+//Another solution
+var lettres = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+
+function generatePassword(num) {
+    var password = []
+    if (num < 6 || num > 15) {
+        return "erreur";
+
+    }
+    else{
+        for (var i = 0; i <= num; i++) {
+
+            var max = lettres.length - 1
+            var b = Math.floor(Math.random() * (max + 1))
+
+            password.push(lettres[b])
+        }
+
+        return password.join("")
+    }
+
+}
+
+var final= generatePassword(6)
+console.log(final)
+///Bonus ll//
+function launchDice(numberOfDice) {
+    var min = 1;
+    var max = 6;
+    var sum = 0;
+
+    for (var i = 0; i < numberOfDice; i++) {
+        var dice = Math.floor(Math.random() * (max - min + 1) + min);
+
+        sum += dice;
+    }
+
+    return sum;
+}
+
+var joueur1 = launchDice(5);
+var joueur2 = launchDice(5);
+
+if (joueur1 > joueur2) {
+    console.log("Joueur 1 a gagné")
+} else if (joueur1 < joueur2) {
+    console.log("Joueur 2 a gagné")
+} else {
+    console.log("Egalité");
+}
+///Bonus///
+function launchDice(numberOfDice) {
+    var min = 1;
+    var max = 6;
+    var sum = 0;
+
+    for (var i = 0; i < numberOfDice; i++) {
+        var dice = Math.floor(Math.random() * (max - min + 1) + min);
+
+        sum += dice;
+    }
+
+    return sum;
+}
+
+var joueur1 = launchDice(5);
+var joueur2 = launchDice(5);
+
+if (joueur1 > joueur2) {
+    console.log("Joueur 1 a gagné")
+} else if (joueur1 < joueur2) {
+    console.log("Joueur 2 a gagné")
+} else {
+    console.log("Egalité");
+}
